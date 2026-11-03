@@ -1,0 +1,20 @@
+{
+  "name": "enterprise-agent-desk",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "learn:day01": "node --env-file=.env apps/server/scripts/01-model-call.mjs",
+    "learn:day02": "node apps/server/scripts/02-validate-output.mjs",
+    "learn:classify": "node --env-file=.env apps/server/scripts/03-classify-ticket.mjs",
+    "learn:eval": "node apps/server/scripts/04-evaluate-classification.mjs",
+    "learn:eval:live": "node --env-file=.env apps/server/scripts/05-evaluate-live.mjs",
+    "learn:tool": "node apps/server/scripts/06-query-ticket.mjs",
+    "learn:tool:live": "node --env-file=.env apps/server/scripts/07-model-tool-call.mjs",
+    "learn:loop": "node apps/server/scripts/08-tool-loop-demo.mjs",
+    "test:loop": "node --test apps/server/scripts/tool-loop.test.mjs"
+  }
+}

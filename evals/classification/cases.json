@@ -1,0 +1,27 @@
+[
+  {
+    "id": "network-01",
+    "input": "公司内网能开，但VPN一直连接失败",
+    "expectedCategory": "网络与远程接入"
+  },
+  {
+    "id": "hardware-01",
+    "input": "主机按电源开关没有任何反应",
+    "expectedCategory": "设备启动与硬件"
+  },
+  {
+    "id": "clarify-01",
+    "input": "又出现问题了，麻烦处理一下",
+    "expectedCategory": "待澄清"
+  },
+  {
+    "id": "network-02",
+    "input": "办公室所有网页都打不开",
+    "expectedCategory": "网络与远程接入"
+  },
+  {
+    "id": "hardware-02",
+    "input": "台式机启动时电源指示灯不亮",
+    "expectedCategory": "设备启动与硬件"
+  }
+]

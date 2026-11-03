@@ -1,0 +1,160 @@
+{
+  "startedAt": "2026-10-27T13:17:44.401Z",
+  "finishedAt": "2026-10-27T13:17:47.591Z",
+  "requestedModel": "deepseek-flash",
+  "parameters": {
+    "stream": false,
+    "thinking": {
+      "type": "disabled"
+    },
+    "max_tokens": 512,
+    "timeoutMs": 30000
+  },
+  "promptHash": "f206fb3fb0aec90eed8503ceab4f1254453f70b8279cc2a54d5fd15cdff42e30",
+  "promptTemplate": [
+    {
+      "role": "system",
+      "content": "你负责对企业IT工单分类。\n分类标准：\n- 网络与远程接入：VPN、网络连接等问题。\n- 设备启动与硬件：无法开机、电源等问题。\n- 待澄清：现有描述不足以判断类别，或不属于前两类。\n\n只依据用户描述分类，不推断未经提供的故障原因。\n信息明确且符合前两类时直接分类，question为null。\n信息不足或不属于前两类时，分类为待澄清，question提出一个用于分诊的问题。\n只输出JSON对象，包含category与question两个字段，不使用Markdown代码块。"
+    },
+    {
+      "role": "user",
+      "content": "VPN连不上"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"category\":\"网络与远程接入\",\"question\":null}"
+    },
+    {
+      "role": "user",
+      "content": "电脑无法开机"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"category\":\"设备启动与硬件\",\"question\":null}"
+    },
+    {
+      "role": "user",
+      "content": "用不了了，帮我看看"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"category\":\"待澄清\",\"question\":\"具体是哪个设备或软件无法使用？\"}"
+    },
+    {
+      "role": "user",
+      "content": "__USER_INPUT__"
+    }
+  ],
+  "summary": {
+    "planned": 5,
+    "attempted": 5,
+    "received": 5,
+    "skipped": 0,
+    "valid": 5,
+    "correct": 5,
+    "outputComplianceRate": 1,
+    "endToEndCategoryPassRate": 1,
+    "knownTotalTokens": 1049,
+    "usageReportedCount": 5,
+    "usageMissingForAttempted": 0,
+    "stoppedReason": null
+  },
+  "results": [
+    {
+      "id": "network-01",
+      "input": "公司内网能开，但VPN一直连接失败",
+      "expectedCategory": "网络与远程接入",
+      "status": "correct",
+      "actualContent": "{\"category\":\"网络与远程接入\",\"question\":null}",
+      "actualCategory": "网络与远程接入",
+      "actualModel": "deepseek-flash",
+      "finishReason": "stop",
+      "formatValid": true,
+      "categoryCorrect": true,
+      "usage": {
+        "input": 200,
+        "output": 12,
+        "total": 212
+      },
+      "durationMs": 846,
+      "error": null
+    },
+    {
+      "id": "hardware-01",
+      "input": "主机按电源开关没有任何反应",
+      "expectedCategory": "设备启动与硬件",
+      "status": "correct",
+      "actualContent": "{\"category\":\"设备启动与硬件\",\"question\":null}",
+      "actualCategory": "设备启动与硬件",
+      "actualModel": "deepseek-flash",
+      "finishReason": "stop",
+      "formatValid": true,
+      "categoryCorrect": true,
+      "usage": {
+        "input": 195,
+        "output": 12,
+        "total": 207
+      },
+      "durationMs": 397,
+      "error": null
+    },
+    {
+      "id": "clarify-01",
+      "input": "又出现问题了，麻烦处理一下",
+      "expectedCategory": "待澄清",
+      "status": "correct",
+      "actualContent": "{\"category\":\"待澄清\",\"question\":\"具体是哪个设备或系统出现了什么问题？\"}",
+      "actualCategory": "待澄清",
+      "actualModel": "deepseek-flash",
+      "finishReason": "stop",
+      "formatValid": true,
+      "categoryCorrect": true,
+      "usage": {
+        "input": 196,
+        "output": 18,
+        "total": 214
+      },
+      "durationMs": 602,
+      "error": null
+    },
+    {
+      "id": "network-02",
+      "input": "办公室所有网页都打不开",
+      "expectedCategory": "网络与远程接入",
+      "status": "correct",
+      "actualContent": "{\"category\":\"网络与远程接入\",\"question\":null}",
+      "actualCategory": "网络与远程接入",
+      "actualModel": "deepseek-flash",
+      "finishReason": "stop",
+      "formatValid": true,
+      "categoryCorrect": true,
+      "usage": {
+        "input": 195,
+        "output": 12,
+        "total": 207
+      },
+      "durationMs": 593,
+      "error": null
+    },
+    {
+      "id": "hardware-02",
+      "input": "台式机启动时电源指示灯不亮",
+      "expectedCategory": "设备启动与硬件",
+      "status": "correct",
+      "actualContent": "{\"category\":\"设备启动与硬件\",\"question\":null}",
+      "actualCategory": "设备启动与硬件",
+      "actualModel": "deepseek-flash",
+      "finishReason": "stop",
+      "formatValid": true,
+      "categoryCorrect": true,
+      "usage": {
+        "input": 197,
+        "output": 12,
+        "total": 209
+      },
+      "durationMs": 743,
+      "error": null
+    }
+  ],
+  "limitations": "五条开发样例，非独立保留集；仅评类别，不评澄清质量；单次运行，不代表生产准确率。API错误及未执行项不应解释为模型分类错误。"
+}
